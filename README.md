@@ -68,7 +68,42 @@ Wazuh Dashboard <br/>
 <br /> 
 Detecting Attacks in Progress <br/>
 <br/>
-</p>
+12.	Now that Wazuh and the Victim’s logon event policies have been configured, unauthorized login attempts can now be detected using the Wazuh agent. Start by going onto the Victim’s machine and inputting the wrong password six times to simulate incorrect login attempts.  <br/>
+<br />
+13.	After this, go back to the Wazuh workstation and open the Wazuh dashboard. Select Security events and apply the date time range filter to Last 15 minutes to show the most recent events. There should be six authentication failures due to the previous failed login attempts. There are more details further down the page.   <br/>
+<img src="https://imgur.com/enC1HqU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/HiioNeQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br /> 
+Brute Force Attack using Kali on Attacker Machine <br/>
+<br/>
+14.	Use the Ncrack tool to perform a brute force attack. First, open the Kali Attacker machine, open the terminal emulator, and nano edit a file called passlist.txt (nano passlist.txt). We will enter six wrong passwords on this file. Save and exit the nano editor.  <br/>
+<img src="https://imgur.com/yshR7eM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br /> 
+15.	To perform the attack using the Ncrack tool, input the following command: sudo ncrack -p 23 --user student -P passlist.txt 192.168.57.30.  <br/>
+<img src="https://imgur.com/BRAGNsP.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br /> 
+16.	Go back to the Wazuh dashboard on the Wazuh workstation machine and refresh the page. The authentication failure count should have gone up. Of course, this value will go up depending on the passwords included on the passlist.txt file. <br/>
+<img src="https://imgur.com/fOdkH8w.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br /> 
+Simulating a DoS Attack <br/>
+<br/>
+17.	Before performing a DoS Attack on the Wazuh workstation, search for Wireshark on the Wazuh workstation VM in the Start menu and run it as administrator. Select Ethernet0 as the interface to listen to.  <br/>
+<img src="https://imgur.com/fOdkH8w.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br /> 
+18.	After this, we go to the Attacker machine and execute the following command in the terminal to perform a DoS attack: hping3 –flood -S -U –rand-source 192.168.57.40 <br/>
+<img src="https://imgur.com/TaoYWhg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br /> 
+19.	Going back to the Wireshark tool on the Wazuh workstation, we can see many TCP packets recorded coming from many random IP sources.  <br/>
+<img src="https://imgur.com/Xr4CSVO.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br /> 
+This is the end of the lab! We have installed and configured Wazuh, performed a brute force attack using the Ncrack tool, and performed a DoS attack using the hping3 tool. In the field of cybersecurity, it is important to be familiar with the types of attacks that can be used against vulnerable networks and the tools available to be able to detect these attacks.
 
 <!--
  ```diff
